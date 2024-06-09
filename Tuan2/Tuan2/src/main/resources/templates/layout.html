@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bai thuc hanh tuan 2</title>
+    <link th:fragment="link-css" rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fdfdfe;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color: #c1e1c1; /* Light green pastel */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .navbar-brand {
+            color: #4a7c59; /* Dark green pastel */
+            font-weight: bold;
+        }
+        .nav-link {
+            color: #4a7c59; /* Dark green pastel */
+        }
+        .nav-link:hover {
+            color: #388e3c; /* Slightly darker green */
+        }
+        .container-fluid {
+            max-width: 1200px;
+            margin: auto;
+        }
+        .navbar-toggler-icon {
+            filter: invert(0.5);
+        }
+        main {
+            background-color: #ffebcd; /* Light yellow pastel */
+            padding: 2em;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            background-color: #c1e1c1; /* Light green pastel */
+            color: #4a7c59; /* Dark green pastel */
+            text-align: center;
+            padding: 1em 0;
+            margin-top: 2em;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+        }
+        footer a {
+            color: #4a7c59; /* Dark green pastel */
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        .btn-primary {
+            background-color: #f3c1c6; /* Light pink pastel */
+            border-color: #f3c1c6;
+        }
+        .btn-primary:hover {
+            background-color: #f28b90; /* Darker pink */
+            border-color: #f28b90;
+        }
+    </style>
+</head>
+<body>
+<header th:fragment="header">
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">HUTECH</a>
+            <button class="navbar-toggler" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/books">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/books/add">Thêm mới</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<main class="container-fluid mt-4">
+    <div th:insert="~{::${content}}"></div>
+    <!--Noi Dung Trang Con -->
+</main>
+<footer th:fragment="footer">
+   <script th:src="@{/js/bootstrap.min.js}"></script>
+</footer>
+</body>
+</html>

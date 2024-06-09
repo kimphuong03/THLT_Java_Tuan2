@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Danh sách sách</title>
+  <th:block th:replace="layout::link-css"></th:block>
+  <!-- Thêm Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    .navbar {
+      background-color: #e3f2fd; /* Light blue pastel */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+    .navbar-brand {
+      color: #5c7cfa; /* Soft blue */
+      font-weight: bold;
+    }
+    .nav-link {
+      color: #5c7cfa; /* Soft blue */
+    }
+    .nav-link:hover {
+      color: #4a6ff5; /* Darker soft blue */
+    }
+    .container {
+      margin-top: 20px;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+      text-align: center;
+      font-weight: bold;
+    }
+    .table {
+      margin-top: 20px;
+      border-radius: 10px;
+      overflow: hidden; /* This will round the borders */
+    }
+    .table th {
+      background-color: #ffe4e1; /* Light pink pastel */
+      color: #5c7cfa; /* Soft blue */
+      font-weight: bold;
+      text-align: center;
+      border-bottom: none; /* Remove bottom border */
+    }
+    .table td {
+      background-color: #fff5f5; /* Light pink background for cells */
+      color: #333;
+      text-align: center;
+      border-top: none; /* Remove top border */
+    }
+    .table thead th {
+      border: none; /* Remove borders from thead */
+    }
+    .table tbody tr:hover {
+      background-color: #ffe4e1; /* Light pink hover effect */
+    }
+    .btn-primary {
+      background-color: #5c7cfa; /* Soft blue */
+      border-color: #5c7cfa;
+      border-radius: 20px;
+      transition: background-color 0.3s, border-color 0.3s;
+    }
+    .btn-primary:hover {
+      background-color: #4a6ff5; /* Darker soft blue */
+      border-color: #4a6ff5;
+    }
+    .btn-danger {
+      background-color: #fa6c7b; /* Soft red */
+      border-color: #fa6c7b;
+      border-radius: 20px;
+      transition: background-color 0.3s, border-color 0.3s;
+    }
+    .btn-danger:hover {
+      background-color: #f53c4b; /* Darker soft red */
+      border-color: #f53c4b;
+    }
+    footer {
+      background-color: #e3f2fd; /* Light blue pastel */
+      color: #5c7cfa; /* Soft blue */
+      text-align: center;
+      padding: 1em 0;
+      margin-top: 2em;
+      box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+    footer a {
+      color: #5c7cfa; /* Soft blue */
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+<th:block th:replace="layout::header"></th:block>
+<div class="container">
+  <h1 th:text="${title}"></h1>
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th>Ma sach</th>
+        <th>Ten sach</th>
+        <th>Tac gia</th>
+        <th>Gia ban</th>
+        <th>Danh muc</th>
+        <th>Chuc nang</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="book: ${listBook}">
+        <td th:text="${book.id}"></td>
+        <td th:text="${book.title}"></td>
+        <td th:text="${book.author}"></td>
+        <td th:text="${book.price}"></td>
+        <td th:text="${book.category}"></td>
+        <td>
+
+          <a th:href="@{/books/edit/{id}(id=${book.id})}" class="btn btn-primary" >Sửa</a>
+          <a th:href="@{/books/delete/{id}(id=${book.id})}" class="btn btn-danger" onclick="return confirm ('Ban co muon xoa!')">Xóa</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<th:block th:replace="layout::footer"></th:block>
+<!-- Thêm Bootstrap JS (nếu cần) -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

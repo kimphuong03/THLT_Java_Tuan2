@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Book</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f9f5f2; /* Màu nền trang nhẹ nhàng */
+            color: #444; /* Màu chữ chính */
+            font-family: 'Arial', sans-serif; /* Kiểu font chữ */
+        }
+        .container {
+            width: 50%;
+            margin-top: 50px;
+            background-color: #fefefe; /* Nền trắng cho khung chứa */
+            border-radius: 10px; /* Bo góc khung */
+            box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.1); /* Hiệu ứng bóng đổ */
+            padding: 30px;
+        }
+        h1 {
+            color: #e07a5f; /* Màu cam nhạt cho tiêu đề */
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .form-label {
+            color: #6d6875; /* Màu chữ cho nhãn input */
+        }
+        input[type="text"] {
+            background-color: #f5dabd; /* Màu cam nhạt cho input */
+            border-color: #f5dabd; /* Màu viền input */
+            border-radius: 5px; /* Bo góc input */
+            padding: 10px; /* Khoảng cách nội dung với viền */
+            transition: background-color 0.3s ease; /* Hiệu ứng chuyển đổi màu */
+        }
+        input[type="text"]:focus {
+            background-color: #f0c6a0; /* Màu cam nhạt khi focus */
+        }
+        input[type="submit"] {
+            background-color: #e07a5f; /* Màu cam đậm cho nút Submit */
+            border-color: #e07a5f; /* Màu viền nút Submit */
+            color: #fff; /* Màu chữ cho nút Submit */
+            border-radius: 5px; /* Bo góc nút Submit */
+            padding: 10px 20px; /* Kích thước nút Submit */
+            transition: background-color 0.3s ease; /* Hiệu ứng chuyển đổi màu */
+        }
+        input[type="submit"]:hover {
+            background-color: #d95b3c; /* Màu cam đậm khi hover */
+            border-color: #d95b3c; /* Màu viền nút Submit khi hover */
+        }
+        a {
+            color: #e07a5f; /* Màu cam nhạt cho link */
+            text-decoration: none; /* Loại bỏ gạch chân cho link */
+            transition: color 0.3s ease; /* Hiệu ứng chuyển đổi màu */
+        }
+        a:hover {
+            color: #d95b3c; /* Màu cam đậm cho link khi hover */
+        }
+    </style>
+</head>
+<body>
+<div th:replace="layout::header"></div>
+<div class="container">
+    <h1>Edit Book</h1>
+    <form th:action="@{/books/edit}" th:object="${book}" method="post">
+
+        <input type="hidden" th:field="*{id}">
+        <div class="form-group">
+            <label class="form-label" for="title">Title:</label>
+            <input class="form-control" type="text" th:field="*{title}" id="title">
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="author">Author:</label>
+            <input class="form-control" type="text" th:field="*{author}" id="author">
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="price">Price:</label>
+            <input class="form-control" type="text" th:field="*{price}" id="price">
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="category">Category:</label>
+            <input class="form-control" type="text" th:field="*{category}" id="category">
+        </div>
+        <input type="submit" value="Save" class="btn btn-primary">
+    </form>
+    <br>
+    <a th:href="@{/books}" class="btn btn-secondary">Back to List</a>
+</div>
+<div th:replace="layout::footer"></div>
+</body>
+</html>
